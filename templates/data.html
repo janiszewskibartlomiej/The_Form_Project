@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Data of questions</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+<div class="list">
+    <table>
+        <tr>
+            <th>
+                <h3 class="header">Lista pytań</h3>
+            </th>
+        </tr>
+        {% for klucz, wartosc in pytania.items() %}
+
+        <tr>
+            <td class="questions_list">{{loop.index}}.  {{ wartosc }}</td>
+
+            <td ><a class="del" href="/usun?id={{ klucz }}" role="button"/> usuń</td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="trzy_przyciski_lista">
+    <div class="logout_lista">
+        <a href="/logout" style="color: #dc3b3b;">Log out</a>
+    </div>
+    <div class="dodaj_w_wynikach">
+        <a href="/dodaj">Dodaj pytanie</a>
+    </div>
+    <div class="wyniki">
+        <a href="/wyniki" style="color: #dc3b3b;">Wyniki</a>
+    </div>
+</div>
+</body>
+
+</html>
+
+

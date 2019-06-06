@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title> Register</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<div class="log_container">
+    <div class="log">
+        <form method="post" action="/registerghuewrdb">
+            <p class="header">Rejestracja użytkownika</p>
+                {% if validator %}
+                <div class="alert" style="font-size: 0px;">{{ validator[0] }}</div>
+                {% elif double_user %}
+                <div class="alert" style="font-size: 0px;">{{ double_user[0] }}</div>
+                {% endif %}
+            <div class="inputs">
+                <div class="user">
+                    <label class="label_user" for="username">Username</label>
+                    <input class="in" name="username" id="username" placeholder="Podaj login" required>
+                </div>
+                <div class="password">
+                    <label class="label_password">Password</label>
+                    <input class="in" type="password" name="password" placeholder="Podaj hasło" required>
+                </div>
+                <div class="password">
+                    <label class="label_confirm">Confirm</label>
+                    <input class="in" type="password" name="password2" placeholder="Potwierdź hasło" required>
+                </div>
+                <div>
+                    <input id="button_register" type="submit" value="Register">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

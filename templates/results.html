@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Results of the form</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+<div class="list">
+    <table>
+        <tr>
+            <th>
+
+                <h3 class="header">Wyniki ankiety</h3>
+            </th>
+        </tr>
+        {% for i in wyniki %}
+        <tr>
+            <td class="questions_list" style="font-size: 1.5vw;">{{loop.index}}. {{i['pytanie']}}
+                <br>
+                <br>
+                <div class="dwa_przyciski" style="margin: auto;">
+                    <div>
+                        Na "Tak": <a class="green">{{i['na tak']}}</a>
+                    </div>
+                    <div class="na_nie">
+                        Na "Nie": <a class="red">{{i['na nie:']}}</a>
+                    </div>
+                    {% if i['na tak']=='' and i['na nie:']=='' %}
+                    <a>Brak wyników dla tego pytania</a>
+                    {%endif%}
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="trzy_przyciski">
+    <div class="baza2">
+        <a href="/baza">Baza pytań</a>
+    </div>
+    <div class="logout_wyniki">
+        <a href="/logout" style="color: #dc3b3b;">Log out</a>
+    </div>
+    <div class="dodaj_wyniki">
+        <a href="/dodaj">Dodaj pytanie</a>
+    </div>
+</div>
+</body>
+
+</html>
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Form for user</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+<form action="/ankieta" method="post">
+    <div class="list">
+        <table>
+            <tr>
+                <th>
+                    <h3 class="header">Lista pytań</h3>
+                </th>
+            </tr>
+            {% for klucz, wartosc in pytania.items() %}
+            <section>
+                <tr>
+                    <div class="">
+                        <td class="questions_list ">{{loop.index}}. {{ wartosc }}
+                    </div>
+                    <br>
+                    <div class="question_form">
+                        <div id="checkbox1">
+                            <input class="checkbox" type="radio" name="answer {{klucz}}" value="{{klucz}} T"><label
+                                class="label_form">Tak</label>
+                        </div>
+                        <div>
+                            <input class="checkbox" type="radio" name="answer {{klucz}}" value="{{klucz}} N"><label
+                                class="label_form">Nie</label>
+                        </div>
+                    </div>
+                    </td>
+                </tr>
+            </section>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="dwa_przyciski">
+        <div>
+            <input class="wyslij_ankiete" type="submit" value="Wyślij ankietę">
+        </div>
+        <div>
+            <a class="logout_ankieta" href="/logout">Log out</a>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>
+
+

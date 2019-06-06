@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>LOG IN to the Form</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<div class="log_container">
+    <div class="log">
+        <form method="post" action="/login">
+            <p class="header">Logowanie do formularza</p>
+            {% if messages %}
+            <div class="alert" style="font-size: 0px;">{{ messages[0] }}</div>
+            {% endif %}
+            <div class="inputs">
+                <div class="user">
+                    <label class="label_user" for="username">Username</label>
+                    <input class="in" name="username" id="username" placeholder="Wpisz login" required>
+                </div>
+                <div class="password">
+                    <label class="label_password">Password</label>
+                    <input class="in" type="password" name="password" placeholder="Wpisz hasło" required>
+                </div>
+                <div>
+                    <input id="button" type="submit" value="Log in">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

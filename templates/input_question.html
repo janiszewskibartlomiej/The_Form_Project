@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Add questions</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+<div class="log_container">
+    <br>
+    <form class="question" method="POST" action="/dodaj">
+        <p class="header">Wprowadzanie danych do bazy</p>
+        {% if added %}
+        <div class="alert" style="font-size: 0px;">{{ added[0] }}</div>
+        {% endif %}
+        <label class="question_word">Pytanie:</label>
+        <br>
+        <br>
+        <input type="text" name="question" class="in_for"
+               placeholder="Wpisz pytanie które zostanie dodane do formularza">
+        <br>
+        <br>
+            <div class="button_dodaj">
+                <div>
+                    <a href="/logout" class="logout">Log out</a>
+                </div>
+                <div class="baza">
+                    <a href="/baza">Baza pytań</a>
+                </div>
+                <div class="wyniki_input">
+                    <a href="/wyniki" style="color: #dc3b3b;">Wyniki</a>
+                </div>
+                <div>
+                    <input class="dodaj" type="submit" value="Dodaj">
+                </div>
+            </div>
+    </form>
+</div>
+</body>
+
+</html>
+
+
