@@ -26,7 +26,7 @@ Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
 <li>Walidacja hasła w panelu "Register".</li>
 <li>Walidacja loginu w panelu "Register".</li>
 <li>Dodanie pytania do bazy.</li>
-<li>Aplikacja zapisuje konkretne zdarzenia w logach - w pliku "form_app.log:.</li>
+<li>Aplikacja zapisuje konkretne zdarzenia w logach - w pliku "form_app.log".</li>
 </ul>
 
 <h3>Instrukcja uruchomienia:</h3>
