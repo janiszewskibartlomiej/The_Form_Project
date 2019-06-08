@@ -7,7 +7,7 @@ Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
 <h3>Opis działania:</h3>
 
 <ul>
-<li>Aplikacja umożliwia storzenie kont administratora oraz uzytkownika. Konta będą posiadały osobne upranienia.</li>
+<li>Aplikacja umożliwia stworzenie kont administratora oraz uzytkownika. Konta będą posiadały osobne upranienia.</li>
 <li>Administrator będzie miał możliwość zalogowania się do swojego panelu.</li>
 <li>Administrator będzie miał możliwość zdefiniowania pytań w formularzu.</li>
 <li>Pytania zostaną zapisane w badzie danych SQLite3.</li>
