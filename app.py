@@ -1,5 +1,5 @@
 from flask import Flask
-from open_key import klucz
+from open_key import read_key
 from index import home_page
 from register import register_users
 from login import login_panel
@@ -11,7 +11,7 @@ from logout import logout_section
 from delete import del_question
 
 app = Flask(__name__)
-app.secret_key = klucz()
+app.secret_key = read_key()
 app.register_blueprint(home_page)
 app.register_blueprint(register_users)
 app.register_blueprint(login_panel)

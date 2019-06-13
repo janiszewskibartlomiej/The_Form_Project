@@ -66,15 +66,6 @@ body {
     box-shadow: 5px 5px 5px #ccc;
     border-style: solid;
     }
-#button_baza {
-    cursor: pointer;
-    box-shadow: 5px 5px 5px #ccc;
-    border-radius: 0.5vw;
-    height: 2.0vw;
-    width: 7.5vw;
-    font-size: 1.4vw;
-    margin-right: 14vw;
-    }
 
 .header {
     font-size: 1.7vw;
@@ -163,7 +154,7 @@ body {
 .answer {
     width: 2vw;}
 
-.button_dodaj {
+.button_add {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -193,7 +184,7 @@ body {
     padding: 4px;
     border-style: solid;}
 
-.logout_lista {
+.logout_list {
     background-color: #dddddd;
     border-color: #898989;
     border-width: 1px 1px 2px 1px;
@@ -207,7 +198,7 @@ body {
     margin-top: 1vw;
     }
 
-.logout_ankieta {
+.logout_form {
     background-color: #dddddd;
     border-color: #898989;
     border-width: 1px 1px 2px 1px;
@@ -221,7 +212,7 @@ body {
     border-style: solid;
     }
 
-.dwa_przyciski {
+.two_button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,17 +220,7 @@ body {
     margin-top: 1vw;
     }
 
-.dwa_przyciski_baza {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 2vw;
-    margin-top: 1vw;
-    margin-left: -5vw;
-    }
-
-.trzy_przyciski_lista {
+.three_button_list {
     display: flex;
     justify-content: start;
     margin-left: 37.5%;
@@ -248,9 +229,9 @@ body {
     text-align: center;
     }
 
-.alert {animation: dodano 3s;}
+.alert {animation: added 3s;}
 
-@keyframes dodano
+@keyframes added
 {0%{
     padding: 1.0vw;
     background-color: #f44336;
@@ -271,19 +252,6 @@ body {
     font-size: 1.3vw;}
 
 }
-/*100%{location.reload();}*/
-
-/*
-.alert {
-    padding: 1.0vw;
-    background-color: #f44336;
-    color: white;
-    margin-bottom: 1vw;
-    text-align:center;
-    display: block;
-    width: 90%;
-    font-size: 1.3vw;
-    }*/
 
 .del {
     background-color: #007bff;
@@ -293,7 +261,7 @@ body {
     border-radius: 1vw;
     margin-left: 0.9vw;}
 
-.baza {
+.data {
     background-color: #007bff;
     border-color: #007bff;
     padding: 0.3vw 0.4vw;
@@ -301,7 +269,7 @@ body {
     border-radius: 1vw;
     }
 
-.dodaj {
+.add {
     background-color: #007bff;
     border-color: #007bff;
     padding: 0.2vw 0.3vw;
@@ -312,7 +280,7 @@ body {
 
     }
 
-.dodaj_w_wynikach {
+.add_to_results {
     background-color: #007bff;
     border-color: #007bff;
     padding: 4px;
@@ -325,7 +293,7 @@ body {
     margin-right: 1vw;
 }
 
-.wyslij_ankiete {
+.sent_form {
     background-color: #007bff;
     border-color: #007bff;
     padding: 0.2vw 0.4vw;
@@ -372,7 +340,7 @@ input {
     font-size: 1.5vw;
     color: #5cd802}
 
-.logout_wyniki {
+.logout_results {
     background-color: #dddddd;
     border-color: #898989;
     border-width: 1px 1px 2px 1px;
@@ -385,7 +353,7 @@ input {
     margin-top: 1vw;
     }
 
-.trzy_przyciski {
+.three_button {
     display: flex;
     justify-content: space-around;
     align-items: inherit;
@@ -393,7 +361,7 @@ input {
     width: 27%;
     }
 
-.baza2 {
+.data2 {
     background-color: #007bff;
     border-color: #007bff;
     padding: 5px;
@@ -404,7 +372,7 @@ input {
     margin-top: 1vw;
     }
 
-.dodaj_wyniki {
+.add_results {
     background-color: #007bff;
     border-color: #007bff;
     padding: 5px;
@@ -415,10 +383,10 @@ input {
     margin-top: 1vw;
 }
 
-.na_nie {
+.no {
     margin-left: 3vw;}
 
-.wyniki {
+.results {
     background-color: #dddddd;
     border-color: #898989;
     border-width: 1px 1px 2px 1px;
@@ -432,7 +400,7 @@ input {
     margin-top: 1vw;
  }
 
-.wyniki_input {
+.results_of_input {
     background-color: #dddddd;
     border-color: #898989;
     border-width: 1px 1px 2px 1px;

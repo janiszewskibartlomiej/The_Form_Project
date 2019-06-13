@@ -20,26 +20,26 @@
                 <h3 class="header">Lista pytań</h3>
             </th>
         </tr>
-        {% for klucz, wartosc in pytania.items() %}
+        {% for key, volume in questions.items() %}
 
         <tr>
-            <td class="questions_list">{{loop.index}}.  {{ wartosc }}</td>
+            <td class="questions_list">{{loop.index}}.  {{ volume }}</td>
 
-            <td ><a class="del" href="/usun?id={{ klucz }}" role="button"/> usuń</td>
+            <td ><a class="del" href="/usun?id={{ key }}" role="button"/> usuń</td>
 
 
         </tr>
         {% endfor %}
     </table>
 </div>
-<div class="trzy_przyciski_lista">
-    <div class="logout_lista">
+<div class="three_button_list">
+    <div class="logout_list">
         <a href="/logout" style="color: #dc3b3b;">Log out</a>
     </div>
-    <div class="dodaj_w_wynikach">
+    <div class="add_to_results">
         <a href="/dodaj">Dodaj pytanie</a>
     </div>
-    <div class="wyniki">
+    <div class="results">
         <a href="/wyniki" style="color: #dc3b3b;">Wyniki</a>
     </div>
 </div>

@@ -1,125 +1,125 @@
 from flask import Blueprint, render_template, session, redirect
-from log import logi
-from get_connection import polaczenie
+from log import add_log
+from get_connection import connect
 
 form_results = Blueprint('/wyniki', __name__)
 
 
 @form_results.route('/wyniki', methods=['GET', 'POST'])
 def results():
-    lg = logi()
+    log = add_log()
     if not session:
-        lg.warning('Brak sesji')
+        log.warning('Brak sesji')
         return redirect('/login')
 
     if session['is_admin'] == False:
         user = session['user']
-        lg.warning(f'Użytkowanik {user} próbował się dostać do bazy wyników')
+        log.warning(f'Użytkowanik {user} próbował się dostać do bazy wyników')
         return redirect('ankieta')
 
-    conn = polaczenie()
+    conn = connect()
     c = conn.cursor()
 
-    def id_pytan_z_odp():
-        zapytanie1 = """
+    def id_question_which_answer():
+        query_one = """
         SELECT id_question FROM "answers" GROUP BY id_question;
         """
-        c.execute(zapytanie1)
-        lista_id_pytan = c.fetchall()
-        # print(lista_id_pytan)
-        lg.info(f'Sprawdzenie listy id pytań z odpowiedziami: {lista_id_pytan}')
-        return lista_id_pytan
+        c.execute(query_one)
+        list_of_id_question = c.fetchall()
+        # print(list_of_id_question)
+        log.info(f'check listy id pytań z odpowiedziami: {list_of_id_question}')
+        return list_of_id_question
 
-    def odpowiedzi_na_pytanie(id_question):
-        zapytanie2 = """
+    def answers_of_question(id_question):
+        query_two = """
         SELECT id_question, answer, question FROM "answers" WHERE id_question = ?;"""
          # INNER JOIN "questions" ON answers.id_question = questions.id WHERE id_question = ?;"""
 
-        c.execute(zapytanie2, (id_question,))
-        odpowiedzi = c.fetchall()
-        # print(odpowiedzi)
-        lg.info(f'Pobranie odpowiedzi do pytania: {id_question}')
-        return odpowiedzi
+        c.execute(query_two, (id_question,))
+        answers = c.fetchall()
+        # print(answers)
+        log.info(f'Pobranie odpowiedzi do pytania: {id_question}')
+        return answers
 
-    def policz_odpowiedzi(odpowiedzi):
-        odp_tak, odp_nie = 0, 0
-        for id_question, answer, question in odpowiedzi:
+    def count_answers(answers):
+        answer_yes, answer_no = 0, 0
+        for id_question, answer, question in answers:
             if answer == 'T':
-                odp_tak += 1
+                answer_yes += 1
             if answer == 'N':
-                odp_nie += 1
-            pytanie = question
-        wynik = {'id_question': id_question, 'pytanie': pytanie, 'odp_tak': odp_tak, 'odp_nie': odp_nie}
-        # print(wynik)
-        lg.info(f'Policzenie odpowiedzi dla {wynik}')
-        return wynik
+                answer_no += 1
+            question = question
+        result = {'id_question': id_question, 'question': question, 'answer_yes': answer_yes, 'answer_no': answer_no}
+        # print(result)
+        log.info(f'Policzenie odpowiedzi dla {result}')
+        return result
 
-    pogrupowana_lista_odpowiedzi = []
+    group_by_list_of_answers = []
 
-    for id in id_pytan_z_odp():
+    for id in id_question_which_answer():
         id = id[0]
-        odpowiedzi = odpowiedzi_na_pytanie(id)
-        wynik = policz_odpowiedzi(odpowiedzi)
-        pogrupowana_lista_odpowiedzi.append(wynik)
-    # print(pogrupowana_lista_odpowiedzi)
+        answers = answers_of_question(id)
+        result = count_answers(answers)
+        group_by_list_of_answers.append(result)
+    # print(group_by_list_of_answers)
 
-    def udzial_procentowy(i):
-        suma_pytan = i['odp_tak'] + i['odp_nie']
-        na_tak = (i['odp_tak'] / suma_pytan) * 100
-        na_tak = f'{na_tak:.2f} %'
-        na_tak = na_tak.replace('.', ',')
+    def percentage_share(i):
+        sum_of_question = i['answer_yes'] + i['answer_no']
+        answer_yes = (i['answer_yes'] / sum_of_question) * 100
+        answer_yes = f'{answer_yes:.2f} %'
+        answer_yes = answer_yes.replace('.', ',')
         id_question = i['id_question']
-        na_nie = (i['odp_nie'] / suma_pytan) * 100
-        na_nie = f'{na_nie:.2f} %'
-        na_nie = na_nie.replace('.', ',')
-        tresc_pytania = i['pytanie']
-        wynik = {'id_pytania': id_question, 'pytanie': tresc_pytania, 'na tak': na_tak, 'na nie:': na_nie}
-        lg.info(f'Dokonuję obliczeń procentowych: {wynik}')
-        return wynik
+        answer_no = (i['answer_no'] / sum_of_question) * 100
+        answer_no = f'{answer_no:.2f} %'
+        answer_no = answer_no.replace('.', ',')
+        question = i['question']
+        result = {'id_pytania': id_question, 'question': question, 'answer_yes': answer_yes, 'answer_no': answer_no}
+        log.info(f'Dokonuję obliczeń procentowych: {result}')
+        return result
 
-    def spr_ilosci_wszystkich_pytan():
-        zapytanie = """
+    def verify_number_of_every_questions():
+        query = """
         SELECT id, question FROM "questions";
         """
-        c.execute(zapytanie)
-        lista_id = c.fetchall()
-        lg.info(f'Sprawdznie ilości wszystkich pytań: {lista_id}')
-        return lista_id
+        c.execute(query)
+        list_of_id = c.fetchall()
+        log.info(f'Sprawdznie ilości wszystkich pytań: {list_of_id}')
+        return list_of_id
 
-    wyniki = []
-    for i in pogrupowana_lista_odpowiedzi:
-        wynik = udzial_procentowy(i)
-        wyniki.append(wynik)
+    results = []
+    for i in group_by_list_of_answers:
+        result = percentage_share(i)
+        results.append(result)
     # print('----------------------')
-    # print(wyniki)
-    lista_wszystkich_pytan = spr_ilosci_wszystkich_pytan()
+    # print(results)
+    list_of_every_questions = verify_number_of_every_questions()
 
-    def spr_pytan_bez_odp(lista_odp):
-        for i in lista_odp:
+    def verify_questions_without_answer(list_of_answers):
+        for i in list_of_answers:
             # print(i)
-            # print(lista)
-            for element in lista_wszystkich_pytan:
+            # print(list_of_answer)
+            for element in list_of_every_questions:
                 # print(element)
                 if i[0] == element[0]:
-                    lista_wszystkich_pytan.remove(element)
-            # print('lista do dodania: ', lista_wszystkich_pytan)
-        lg.warning(f'Sprawdzenie pytań bez odpowiedzi: {lista_wszystkich_pytan}')
-        return lista_wszystkich_pytan
+                    list_of_every_questions.remove(element)
+            # print('lista do dodania: ', list_of_every_questions)
+        log.warning(f'sprawdzenie pytań bez odpowiedzi: {list_of_every_questions}')
+        return list_of_every_questions
 
-    def dodanie_do_wyniku_pytan_bez_odp(lista_bez_odp):
-        lista_bez_odp = spr_pytan_bez_odp(id_pytan_z_odp())
-        for pytanie in lista_bez_odp:
-            id_pytania = pytanie[0]
-            tresc_pytania = pytanie[1]
-            wynik = {'id_pytania': id_pytania, 'pytanie': tresc_pytania, 'na tak': '0,00 %', 'na nie:': '0,00 %'}
-            wyniki.append(wynik)
-            lg.warning(f'Dodanie do wyników pytania bez odpowiedzi: {wynik}')
+    def add_to_results_questions_without_answer(list_without_answers):
+        list_without_answers = verify_questions_without_answer(id_question_which_answer())
+        for question in list_without_answers:
+            id_question = question[0]
+            question = question[1]
+            result = {'id_question': id_question, 'question': question, 'answer_yes': '0,00 %', 'answer_no': '0,00 %'}
+            results.append(result)
+            log.warning(f'Dodanie do wyników pytania bez odpowiedzi: {result}')
 
-    pytania = id_pytan_z_odp()
-    sprawdzenie = spr_pytan_bez_odp(pytania)
-    dodanie = dodanie_do_wyniku_pytan_bez_odp(sprawdzenie)
-    print(wyniki)
-    lg.info(f'Wszytskie wyniki obliczeń: {wyniki}')
+    questions = id_question_which_answer()
+    check = verify_questions_without_answer(questions)
+    add_to_results_questions_without_answer(check)
+    print(results)
+    log.info(f'Wszytskie results obliczeń: {results}')
 
-    context = {'wyniki': wyniki}
+    context = {'results': results}
     return render_template('results.html', **context)

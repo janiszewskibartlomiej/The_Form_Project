@@ -20,20 +20,20 @@
                     <h3 class="header">Lista pytań</h3>
                 </th>
             </tr>
-            {% for klucz, wartosc in pytania.items() %}
+            {% for key, volume in questions.items() %}
             <section>
                 <tr>
                     <div class="">
-                        <td class="questions_list ">{{loop.index}}. {{ wartosc }}
+                        <td class="questions_list ">{{loop.index}}. {{ volume }}
                     </div>
                     <br>
                     <div class="question_form">
                         <div id="checkbox1">
-                            <input class="checkbox" type="radio" name="answer {{klucz}}" value="{{klucz}} T"><label
+                            <input class="checkbox" type="radio" name="answer {{key}}" value="{{key}} T"><label
                                 class="label_form">Tak</label>
                         </div>
                         <div>
-                            <input class="checkbox" type="radio" name="answer {{klucz}}" value="{{klucz}} N"><label
+                            <input class="checkbox" type="radio" name="answer {{key}}" value="{{key}} N"><label
                                 class="label_form">Nie</label>
                         </div>
                     </div>
@@ -43,12 +43,12 @@
             {% endfor %}
         </table>
     </div>
-    <div class="dwa_przyciski">
+    <div class="two_button">
         <div>
-            <input class="wyslij_ankiete" type="submit" value="Wyślij ankietę">
+            <input class="sent_form" type="submit" value="Wyślij ankietę">
         </div>
         <div>
-            <a class="logout_ankieta" href="/logout">Log out</a>
+            <a class="logout_form" href="/logout">Log out</a>
         </div>
     </div>
 </form>

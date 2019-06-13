@@ -1,24 +1,24 @@
 from flask import session, Blueprint, redirect
-from log import logi
+from log import add_log
 
 home_page = Blueprint('/', __name__)
 
 
 @home_page.route('/')
 def index():
-    lg = logi()
+    log = add_log()
     if not session:
-        lg.warning('Brak sesji')
+        log.warning('Brak sesji')
         return redirect('/login')
 
     if session['is_admin'] == False:
-        lg.info('Konto użytkownika')
+        log.info('Konto użytkownika')
         return redirect('ankieta')
 
     id = session.get('user_id')
     user = session.get('user')
     is_admin = session.get('is_admin')
-    lg.info('Konto admina')
+    log.info('Konto admina')
     # print('id: ', id, 'user: ', user, 'is admin: ', is_admin)
 
     return redirect('/dodaj')

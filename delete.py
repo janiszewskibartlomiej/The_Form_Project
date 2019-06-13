@@ -1,13 +1,13 @@
 from flask import Blueprint, request, session, redirect
-from log import logi
-from get_connection import polaczenie
+from log import add_log
+from get_connection import connect
 
 del_question = Blueprint('/usun', __name__)
 
 
 @del_question.route('/usun')
 def delete():
-    lg = logi()
+    lg = add_log()
     if not session:
         lg.warning('Brak sesji')
         return redirect('/login')
@@ -17,16 +17,16 @@ def delete():
         lg.warning(f'Użytkownik {user} próbował usunąć pytanie  ')
         return redirect('/ankieta')
 
-    conn = polaczenie()
+    conn = connect()
     c = conn.cursor()
 
-    zapytanie = """
+    query = """
         DELETE FROM "questions" WHERE id = ?;
         """
-    usun = request.args.get('id')
-    # print(usun)
-    lg.info(f'Usunięcie pytania z bazy o numerze id: {usun}')
-    c.execute(zapytanie, (usun,))
+    delate_question = request.args.get('id')
+    # print(delate_question)
+    lg.info(f'Usunięcie pytania z bazy o numerze id: {delate_question}')
+    c.execute(query, (delate_question,))
 
     conn.commit()
     conn.close()

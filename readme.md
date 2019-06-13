@@ -7,13 +7,13 @@ Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
 <h3>Opis działania:</h3>
 
 <ul>
-<li>Aplikacja umożliwia storzenie kont administratora oraz uzytkownika. Konta będą posiadały osobne upranienia.</li>
+<li>Aplikacja umożliwia stworzenie kont administratora oraz użytkownika. Konta będą posiadały osobne upranienia.</li>
 <li>Administrator będzie miał możliwość zalogowania się do swojego panelu.</li>
 <li>Administrator będzie miał możliwość zdefiniowania pytań w formularzu.</li>
 <li>Pytania zostaną zapisane w badzie danych SQLite3.</li>
-<li>Administrator będzie miał możliwość zobaczenia pytań w przegladarce oraz usuwania poszczególnego pytania.</li>
+<li>Administrator będzie miał możliwość wyświetlenia pytań w przegladarce oraz usuwania poszczególnego pytania.</li>
 <li>Formularz będzie prezentowany w przeglądarce.</li>
-<li>Użytkownicy będą mogli  zarejestrować się przez panel "Register", a nastepnie zalogować się systemu.</li>
+<li>Użytkownicy będą mogli  zarejestrować się przez panel "Register", a nastepnie zalogować się do formularza.</li>
 <li>Użytkownicy wypełnią formularz, który zostanie zapisany w badzie danych.</li>
 <li>Administrator po wypełnieniu formularza będzię mial możliwość przgladania wyników ankiety w postaci średniej procentowej względem konkretnego pytania.</li>
 <li>Administrator będzie miał możliwość analizy danych zapisanych w bazie.</li>
@@ -33,14 +33,14 @@ Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
 
 <ol>
 <li>Uruchom plik data_init.py</li>
-<li>W celu utworzenia dodatkowych kont "Admin" uruchom plik createAdminScript.py</li>
+<li>W celu utworzenia dodatkowych kont "Admin" uruchom plik create_Admin_account.py</li>
 <li>W pliku session_k.txt wpisz dowolny ciąg znaków</li>
 <li>Uruchom plik app.py</li>
 </ol>
 
 <h3>Wideoprezentacja:</h3>
 
-<link>https://drive.google.com/file/d/1DtFz_f5Ya-LrPkRpAAZwGjNNzGJlfV54/view</link>
+<link>https://drive.google.com/file/d/1jxGh9hS_T9C9cU1thLFjw2iagYTiPX5B/view</link>
 
 ----------
 

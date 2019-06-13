@@ -1,13 +1,13 @@
 from flask import Blueprint, flash, request, session, render_template, get_flashed_messages, redirect
-from log import logi
-from get_connection import polaczenie
+from log import add_log
+from get_connection import connect
 
 add_question = Blueprint('/dodaj', __name__)
 
 
 @add_question.route('/dodaj', methods=['GET', 'POST'])
 def add():
-    lg = logi()
+    lg = add_log()
     if not session:
         lg.warning('Brak sesji')
         return redirect('/login')
@@ -25,11 +25,11 @@ def add():
 
     if request.method == 'POST':
 
-        conn = polaczenie()
+        conn = connect()
         c = conn.cursor()
 
         question = request.form['question']
-        autor = session['user_id']
+        author = session['user_id']
         user = session['user']
 
         # print(type(question))
@@ -41,11 +41,11 @@ def add():
         add_question = """
         INSERT INTO "questions" ("id", "id_user", "question", "type") VALUES (NULL, ?, ?,'tn')"""
 
-        parametry = (autor, question)
-        # print(parametry)
+        parameters = (author, question)
+        # print(parameters)
 
         lg.info(f'Dodano pytanie: "{question}" do bazy danych')
-        c.execute(add_question, parametry)
+        c.execute(add_question, parameters)
         conn.commit()
         flash('Pytanie zapisano w bazie')
 

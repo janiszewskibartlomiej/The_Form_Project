@@ -21,19 +21,19 @@
                 <h3 class="header">Wyniki ankiety</h3>
             </th>
         </tr>
-        {% for i in wyniki %}
+        {% for i in results %}
         <tr>
-            <td class="questions_list" style="font-size: 1.5vw;">{{loop.index}}. {{i['pytanie']}}
+            <td class="questions_list" style="font-size: 1.5vw;">{{loop.index}}. {{i['question']}}
                 <br>
                 <br>
-                <div class="dwa_przyciski" style="margin: auto;">
+                <div class="two_button" style="margin: auto;">
                     <div>
-                        Na "Tak": <a class="green">{{i['na tak']}}</a>
+                        Na "Tak": <a class="green">{{i['answer_yes']}}</a>
                     </div>
-                    <div class="na_nie">
-                        Na "Nie": <a class="red">{{i['na nie:']}}</a>
+                    <div class="no">
+                        Na "Nie": <a class="red">{{i['answer_no']}}</a>
                     </div>
-                    {% if i['na tak']=='' and i['na nie:']=='' %}
+                    {% if i['answer_yes']=='' and i['answer_no']=='' %}
                     <a>Brak wyników dla tego pytania</a>
                     {%endif%}
                 </div>
@@ -42,14 +42,14 @@
         {% endfor %}
     </table>
 </div>
-<div class="trzy_przyciski">
-    <div class="baza2">
+<div class="three_button">
+    <div class="data2">
         <a href="/baza">Baza pytań</a>
     </div>
-    <div class="logout_wyniki">
+    <div class="logout_results">
         <a href="/logout" style="color: #dc3b3b;">Log out</a>
     </div>
-    <div class="dodaj_wyniki">
+    <div class="add_results">
         <a href="/dodaj">Dodaj pytanie</a>
     </div>
 </div>

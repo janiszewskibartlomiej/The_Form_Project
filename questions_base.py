@@ -1,39 +1,39 @@
 from flask import Blueprint, session, render_template, redirect
-from log import logi
-from get_connection import polaczenie
+from log import add_log
+from get_connection import connect
 
 question_load = Blueprint('/baza', __name__)
 
 
 @question_load.route('/baza')
 def data():
-    lg = logi()
+    log = add_log()
     if not session:
-        lg.warning('Brak sesji')
+        log.warning('Brak sesji')
         return redirect('/login')
 
-    conn = polaczenie()
+    conn = connect()
     c = conn.cursor()
 
-    zapytanie = """
+    query = """
     SELECT id, question FROM "questions";
     """
-    c.execute(zapytanie)
-    pytania = c.fetchall()
-    # print(pytania)
-    slownik = {}
+    c.execute(query)
+    questions = c.fetchall()
+    # print(questions)
+    dict = {}
 
-    for x in pytania:
+    for x in questions:
         # print(x)
-        dodaj_do_slownika = {x[0]: x[1]}
-        slownik.update(dodaj_do_slownika)
-    # print(slownik)
+        add_to_dict = {x[0]: x[1]}
+        dict.update(add_to_dict)
+    # print(dict)
 
-    context = {'pytania': slownik}
+    context = {'questions': dict}
     if session['is_admin'] == True:
-        lg.info('Konto admin')
+        log.info('Konto admin')
         return render_template('data.html', **context)
     else:
         user = session['user']
-        lg.warning(f'Użytkowanik {user} próbował się dostać do bazy pytań')
+        log.warning(f'Użytkowanik {user} próbował się dostać do bazy pytań')
         return redirect('/ankieta')

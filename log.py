@@ -1,14 +1,14 @@
 import logging
 
 
-def logi():
+def add_log():
     formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s')
 
-    logger_plikow = logging.getLogger('log_do_pliku')
+    log_to_file = logging.getLogger('log_to_file')
 
-    file_handler = logging.FileHandler('form_app.log')
+    file_handler = logging.FileHandler('from_app.log')
     file_handler.setFormatter(formatter)
 
-    logger_plikow.addHandler(file_handler)
-    logger_plikow.setLevel(logging.INFO)
-    return logger_plikow
+    log_to_file.addHandler(file_handler)
+    log_to_file.setLevel(logging.INFO)
+    return log_to_file
