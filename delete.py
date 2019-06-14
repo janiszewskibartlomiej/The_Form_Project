@@ -9,12 +9,16 @@ del_question = Blueprint('/usun', __name__)
 def delete():
     lg = add_log()
     if not session:
+
         lg.warning('Brak sesji')
+
         return redirect('/login')
 
     if session['is_admin'] == False:
         user = session['user']
+
         lg.warning(f'Użytkownik {user} próbował usunąć pytanie  ')
+
         return redirect('/ankieta')
 
     conn = connect()
@@ -25,10 +29,12 @@ def delete():
         """
     delate_question = request.args.get('id')
     # print(delate_question)
-    lg.info(f'Usunięcie pytania z bazy o numerze id: {delate_question}')
+
     c.execute(query, (delate_question,))
 
     conn.commit()
     conn.close()
+
+    lg.info(f'Usunięcie pytania z bazy o numerze id: {delate_question}')
 
     return redirect('/baza')

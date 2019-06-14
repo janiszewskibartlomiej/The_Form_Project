@@ -11,4 +11,5 @@ def add_log():
 
     log_to_file.addHandler(file_handler)
     log_to_file.setLevel(logging.INFO)
+
     return log_to_file

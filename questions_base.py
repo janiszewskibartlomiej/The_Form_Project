@@ -10,6 +10,7 @@ def data():
     log = add_log()
     if not session:
         log.warning('Brak sesji')
+
         return redirect('/login')
 
     conn = connect()
@@ -21,6 +22,7 @@ def data():
     c.execute(query)
     questions = c.fetchall()
     # print(questions)
+
     dict = {}
 
     for x in questions:
@@ -30,10 +32,15 @@ def data():
     # print(dict)
 
     context = {'questions': dict}
+
     if session['is_admin'] == True:
+
         log.info('Konto admin')
+
         return render_template('data.html', **context)
     else:
         user = session['user']
+
         log.warning(f'Użytkowanik {user} próbował się dostać do bazy pytań')
+
         return redirect('/ankieta')

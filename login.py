@@ -33,18 +33,26 @@ def log_in():
         if line_from_base:
             password_hash = line_from_base['password']
             if check_password_hash(password_hash, password):
+
                 log.info(f'poprawne logowanie user: {username}')
+
                 session['user_id'] = line_from_base['id']
                 session['user'] = line_from_base['user']
                 session['is_admin'] = bool(line_from_base['admin'])
 
                 if line_from_base['admin']:
                     log.info(f'konto admina: {username}')
+
                     return redirect('/dodaj')
+
                 user = session['user']
+
                 log.info(f'konto użytkownika: {user}')
+
                 return redirect('/ankieta')
 
         flash('Błędna nazwa użytkownika lub hasło')
+
         log.warning(f'Błedna nazwa użytkownika "{username}" lub hasło "{password}"')
+
         return redirect('/login')

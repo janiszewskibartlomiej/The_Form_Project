@@ -10,11 +10,14 @@ def add():
     lg = add_log()
     if not session:
         lg.warning('Brak sesji')
+
         return redirect('/login')
 
     if session['is_admin'] == False:
         user = session['user']
+
         lg.info(f'Konto użytkowanika: {user}')
+
         return redirect('ankieta')
 
     if request.method == 'GET':
@@ -29,6 +32,9 @@ def add():
         c = conn.cursor()
 
         question = request.form['question']
+
+        lg.info(f'Dodano pytanie: "{question}" do bazy danych')
+
         author = session['user_id']
         user = session['user']
 
@@ -36,6 +42,7 @@ def add():
 
         if question == '':
             lg.warning(f'{user} próbował wprowdzić buste pytanie')
+
             return redirect('/dodaj')
 
         add_question = """
@@ -44,7 +51,6 @@ def add():
         parameters = (author, question)
         # print(parameters)
 
-        lg.info(f'Dodano pytanie: "{question}" do bazy danych')
         c.execute(add_question, parameters)
         conn.commit()
         flash('Pytanie zapisano w bazie')

@@ -7,7 +7,8 @@ logout_section = Blueprint('/logout', __name__)
 @logout_section.route('/logout')
 def logout():
     log = add_log()
-    log.warning('Wylogowanie')
     session.clear()
+
+    log.warning('Wylogowanie')
 
     return redirect('/')
