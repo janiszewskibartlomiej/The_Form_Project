@@ -9,6 +9,7 @@ from add_questions_to_base import add_question
 from questions_base import question_load
 from logout import logout_section
 from delete import del_question
+from api import api_bp
 
 app = Flask(__name__)
 app.secret_key = read_key()
@@ -21,7 +22,7 @@ app.register_blueprint(add_question)
 app.register_blueprint(question_load)
 app.register_blueprint(logout_section)
 app.register_blueprint(del_question)
+app.register_blueprint(api_bp, url_prefix='/api')
 
 if __name__ == "__main__":
     app.run(debug=True)
-

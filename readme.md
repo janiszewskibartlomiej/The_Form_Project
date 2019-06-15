@@ -2,7 +2,7 @@
 
 <h3>Cel:</h3> 
 
-Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
+Zbieranie wyników wypełnionych formularzy, poddanie ich analizie i wyświetlenie wyników.
 
 <h3>Opis działania:</h3>
 
@@ -38,6 +38,15 @@ Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
 <li>Uruchom plik app.py</li>
 </ol>
 
+<h3>API {"json"}:</h3>
+<h5> Dostępne tylko dla zalogowanych użytkowników z uprawnieniami 'Admin'</h5>
+<ul>
+<li>"/api/uzytkownicy"  - zestawienie wszystkich dostępnych użytkowników.</li>
+<li>"/api/pytania"  - zestawienie pytań wykożystywanych obecnie do ankiety.</li>
+<li>"/api/odpowiedzi"  - zestawienie wszystkich odpowiedzi z przeprowadzonych ankiet.</li>
+
+</ul>
+
 <h3>Wideoprezentacja:</h3>
 
 <link>https://drive.google.com/file/d/1jxGh9hS_T9C9cU1thLFjw2iagYTiPX5B/view</link>
@@ -45,4 +54,4 @@ Zbieranie wyników wypełnionych formularzy w celu ich analizy lub oceny.
 ----------
 
  NARZĘDZIA: 
-<h3>Python 3.7, SQLite3, SQL, Flask, Jinja2, HTML5, CSS, HTTP, Git.</h3>
+<h3>Python 3.7, SQLite3, SQL, Flask, Jinja2, HTML5, CSS3, HTTP, Git.</h3>

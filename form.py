@@ -53,7 +53,15 @@ def form():
         answers_dict = {}
         for k, v in answers.items():
             id = k.strip(' answer')
+            # for one in i:
+            # print(one)
+            # id = one.strip(' NT')
+            # id = int(id)
+            # if one[0].isnumeric() or one[0:2].isnumeric():
+            # print(one[0:2])
             odp = v[-1]
+            # l = one[:2]
+            # l = l.strip()
             answers_dict[id] = odp
         # print(answers_dict)
 
