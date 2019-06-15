@@ -1,4 +1,5 @@
 import json
+from definitions_of_results import prepare_data_with_every_answers
 from flask import Blueprint, request, session, redirect
 from get_connection import connect
 
@@ -43,20 +44,16 @@ def questions():
         return redirect('/')
 
 
-@api_bp.route('/uzytkownicy', methods=['GET', 'POST'])
+@api_bp.route('/wyniki', methods=['GET'])
 def login():
-    conn = connect()
-    c = conn.cursor()
-
     if request.method == 'GET':
-        query = c.execute('SELECT * FROM login')
-        all_login = query.fetchall()
 
-        login = [dict(p) for p in all_login]
+        results = prepare_data_with_every_answers()
+        list_of_json = json.dumps(results)
 
-        list_of_login = {'users': login}
+        print('wynik api: ', list_of_json)
 
         if session:
             if session['is_admin'] == True:
-                return json.dumps(list_of_login)
+                return list_of_json
         return redirect('/login')

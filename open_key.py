@@ -1,4 +1,4 @@
 def read_key():
-    with open('session_k.txt', 'r') as f:
+    with open('secret_k.txt', 'r') as f:
         key = f.readline()
     return key
