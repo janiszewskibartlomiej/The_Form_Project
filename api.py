@@ -1,4 +1,4 @@
-import json, requests
+import json
 from flask import Blueprint, request, session, redirect
 from get_connection import connect
 
