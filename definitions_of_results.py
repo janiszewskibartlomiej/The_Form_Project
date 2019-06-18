@@ -106,6 +106,9 @@ def verify_questions_without_answer(list_of_answers=id_question_which_answer(),
     return list_of_every_questions
 
 
+results = []
+
+
 def add_to_results_questions_without_answer(list_without_answers=verify_questions_without_answer()):
     log = add_log()
     for question in list_without_answers:
