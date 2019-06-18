@@ -2,7 +2,7 @@ from log import add_log
 from get_connection import connect
 
 
-def id_question_which_answer():
+def id_question_whith_answer():
     conn = connect()
     c = conn.cursor()
     log = add_log()
@@ -89,7 +89,7 @@ def verify_number_of_every_questions():
     return list_of_id
 
 
-def verify_questions_without_answer(list_of_answers=id_question_which_answer(),
+def verify_questions_without_answer(list_of_answers=id_question_whith_answer(),
                                     list_of_every_questions=verify_number_of_every_questions()):
     log = add_log()
     log.warning('sprawdzenie pytań bez odpowiedzi')
@@ -124,10 +124,10 @@ def add_to_results_questions_without_answer(list_without_answers=verify_question
 
 
 def prepare_data_with_every_answers():
-    id_question_which_answer()
+    id_question_whith_answer()
 
     group_by_list_of_answers = []
-    for id in id_question_which_answer():
+    for id in id_question_whith_answer():
         id = id[0]
         answers = answers_of_question(id)
         result = count_answers(answers)
