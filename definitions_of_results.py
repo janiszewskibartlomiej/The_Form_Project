@@ -118,7 +118,7 @@ def add_to_results_questions_without_answer(list_without_answers=verify_question
                             'answer_no': '0,00 %'}
         results.append(result_no_answer)
 
-    log.warning(f'Dodanie do wyników pytania bez odpowiedzi: {result_no_answer}')
+        log.warning(f'Dodanie do wyników pytania bez odpowiedzi: {result_no_answer}')
     # print(results)
     return results
 
@@ -133,15 +133,15 @@ def prepare_data_with_every_answers():
         result = count_answers(answers)
         group_by_list_of_answers.append(result)
 
-    results = []
+    results_in_prep = []
     for i in group_by_list_of_answers:
         result = percentage_share(i)
-        results.append(result)
+        results_in_prep.append(result)
 
     verify_questions_without_answer()
 
     no_answers_results = add_to_results_questions_without_answer()
     for element in no_answers_results:
-        results.append(element)
+        results_in_prep.append(element)
     # print('add: ', results)
-    return results
+    return results_in_prep

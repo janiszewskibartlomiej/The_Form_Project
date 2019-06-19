@@ -22,9 +22,9 @@ def results():
 
             return redirect('ankieta')
 
-        results = prepare_data_with_every_answers()
-        context = {'results': results}
+        every_results = prepare_data_with_every_answers()
+        context = {'results': every_results}
 
-        log.info(f'Wszytskie results obliczeń: {results}')
+        log.info(f'Wszytskie results obliczeń: {every_results}')
         return render_template('results.html', **context)
 
