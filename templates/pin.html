@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Verify register</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/png" sizes="150x150" href="static/mstile-150x150.png">
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<div class="log_container">
+    <div class="log">
+        <form method="post" action="/pin">
+            <p class="header">Weryfikacja dostępu do ankiety</p>
+            {% if message_pin %}
+            <div class="alert" style="font-size: 0px;">{{ message_pin[0] }}</div>
+            {% endif %}
+            <div class="inputs">
+                <div class="password">
+                    <label class="label_pin">PIN </label>
+                    <input class="in" type="password" name="check" placeholder="Wpisz PIN" required>
+                </div>
+                <div>
+                    <input id="button" type="submit" value="check">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

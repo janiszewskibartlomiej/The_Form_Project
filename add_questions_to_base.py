@@ -18,7 +18,7 @@ def add():
 
         lg.info(f'Konto użytkowanika: {user}')
 
-        return redirect('ankieta')
+        return redirect('/ankieta')
 
     if request.method == 'GET':
         if session['is_admin'] == True:

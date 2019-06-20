@@ -1,4 +1,6 @@
 import sqlite3
+
+from create_pin import create_pin_for_users
 from log import add_log
 from create_admin_account import create_admin
 
@@ -19,3 +21,4 @@ def execute_script_sql(database='questionDataBase.db', script='data_sql_creating
 if __name__ == '__main__':
     execute_script_sql()
     create_admin()
+    create_pin_for_users()

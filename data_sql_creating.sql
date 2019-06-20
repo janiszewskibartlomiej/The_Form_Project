@@ -3,6 +3,7 @@ PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS "answers";
 DROP TABLE IF EXISTS "login";
 DROP TABLE IF EXISTS "questions";
+DROP TABLE IF EXISTS "pin"
 
 
 CREATE TABLE "login"
@@ -29,4 +30,9 @@ CREATE TABLE "answers"
 "question"	TEXT NOT NULL,
 "answer" TEXT NOT NULL,
 "is_answer" BOOLEAN DEFAULT 1
+);
+
+CREATE TABLE "pin" (
+	"id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"password"	TEXT NOT NULL
 );

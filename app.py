@@ -1,6 +1,7 @@
 from flask import Flask
 from open_key import read_key
 from index import home_page
+from pin import pin_validation
 from register import register_users
 from login import login_panel
 from form import users_from
@@ -14,6 +15,7 @@ from api import api_bp
 app = Flask(__name__)
 app.secret_key = read_key()
 app.register_blueprint(home_page)
+app.register_blueprint(pin_validation)
 app.register_blueprint(register_users)
 app.register_blueprint(login_panel)
 app.register_blueprint(users_from)
