@@ -54,6 +54,7 @@ Zbieranie wyników wypełnionych formularzy, poddanie ich analizie i wyświetlen
 <h3>Wersja online:</h3>
 
 <link>http://janiszewski.pythonanywhere.com</link>
+
 ----------
 
  NARZĘDZIA: 
