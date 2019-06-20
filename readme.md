@@ -51,6 +51,9 @@ Zbieranie wyników wypełnionych formularzy, poddanie ich analizie i wyświetlen
 
 <link>https://drive.google.com/file/d/1jxGh9hS_T9C9cU1thLFjw2iagYTiPX5B/view</link>
 
+<h3>Wersja online:</h3>
+
+<link>http://janiszewski.pythonanywhere.com</link>
 ----------
 
  NARZĘDZIA: 
