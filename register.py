@@ -10,7 +10,7 @@ register_users = Blueprint('/register', __name__)
 @register_users.route('/register', methods=['GET', 'POST'])
 def register():
     log = add_log()
-    if not session:
+    if not session or not session['pin']:
         log.warning('Brak sesji')
 
         return redirect('/pin')

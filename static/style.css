@@ -135,6 +135,14 @@ body {
     display: flex;
     font-size: 1.1vw;}
 
+.label_pin {
+    color: gray;
+    margin-right: 4%;
+    margin-left: 5%;
+    margin-top: 3px;
+    display: flex;
+    font-size: 1.1vw;}
+
 
 .box {
     display: flex;
