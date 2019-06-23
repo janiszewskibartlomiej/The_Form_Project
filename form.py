@@ -16,7 +16,11 @@ def form():
         return redirect('/login')
 
     if session:
-        if session['is_admin'] == False:
+        if session['only_results']:
+            session.clear()
+            return redirect('/')
+
+        elif session['is_admin'] == False:
 
             if request.method == 'GET':
                 conn = connect()
@@ -47,7 +51,9 @@ def form():
                 c = conn.cursor()
 
                 answers = dict(
-                    (key, request.form.getlist(key) if len(request.form.getlist(key)) > 1 else request.form.getlist(key)[0]) for
+                    (key,
+                     request.form.getlist(key) if len(request.form.getlist(key)) > 1 else request.form.getlist(key)[0])
+                    for
                     key in request.form.keys())
 
                 # print(answers)
@@ -95,13 +101,13 @@ def form():
 
                     except sqlite3.IntegrityError:
 
-                        log.warning('SQLite3 zwrócił błąd: IntegrityError i nastąpiło przekierowanie do strony startowej')
+                        log.warning(
+                            'SQLite3 zwrócił błąd: IntegrityError i nastąpiło przekierowanie do strony startowej')
 
                         redirect('/')
 
-            session.clear()
+                session.clear()
 
-            log.info('Nastąpiło wypełnineie ankiety oraz prawidłowy zapis w bazie danych')
+                log.info('Nastąpiło wypełnineie ankiety oraz prawidłowy zapis w bazie danych')
 
-            return render_template('thank_you.html')
-        return redirect('/')
+                return render_template('thank_you.html')

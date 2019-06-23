@@ -33,8 +33,9 @@
                     <div class="no">
                         Na "Nie": <a class="red">{{i['answer_no']}}</a>
                     </div>
+                    <br>
                 </div>
-                 <section class="results_zero">
+               <section class="results_zero">
                     <br>
                     <div>
                         {% if i['answer_yes']=='0,00 %' and i['answer_no']=='0,00 %'%}
@@ -48,15 +49,11 @@
     </table>
 </div>
 <div class="three_button">
-    <div class="data2">
-        <a href="/baza">Baza pytań</a>
-    </div>
+
     <div class="logout_results">
         <a href="/logout" style="color: #dc3b3b;">Log out</a>
     </div>
-    <div class="add_results">
-        <a href="/dodaj">Dodaj pytanie</a>
-    </div>
+
 </div>
 </body>
 

@@ -421,3 +421,16 @@ input {
     border-style: solid;
     }
 
+.results_zero p {
+    margin: 0;
+    padding: 0.5vw 9vw;
+    font-stretch: ultra-condensed;
+    font-style: italic;
+    text-align: center;
+    color: #e41e5c;
+    font-size: 1.3vw;
+}
+
+.results_zero {
+    display: flex;
+}

@@ -10,20 +10,21 @@ register_users = Blueprint('/register', __name__)
 @register_users.route('/register', methods=['GET', 'POST'])
 def register():
     log = add_log()
-    if not session or not session['pin']:
-        log.warning('Brak sesji')
-
-        return redirect('/pin')
-
-    if session['pin'] == False:
-        log.warning(f'Ktoś próbował się dostać do endpointa register')
-
-        return redirect('/pin')
+    print(session)
 
     if request.method == 'GET':
-        validator = get_flashed_messages()
-        double_user = get_flashed_messages()
-        return render_template('register_user.html', validator=validator, double_user=double_user)
+
+        if session:
+            if not session['pin']:
+                session.clear()
+                return redirect('/login')
+
+            if session['pin']:
+                validator = get_flashed_messages()
+                double_user = get_flashed_messages()
+                return render_template('register_user.html', validator=validator, double_user=double_user)
+
+        return redirect('/login')
 
     if request.method == 'POST':
 

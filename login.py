@@ -29,27 +29,35 @@ def log_in():
         c.execute(query_password, (username,))
         line_from_base = c.fetchone()
         # print('passwords:', password, line_from_base)
+        only_results = ['codeme', 'alek']
 
         if line_from_base:
             password_hash = line_from_base['password']
             if check_password_hash(password_hash, password):
-
+                print(session)
                 log.info(f'poprawne logowanie user: {username}')
 
                 session['user_id'] = line_from_base['id']
                 session['user'] = line_from_base['user']
                 session['is_admin'] = bool(line_from_base['admin'])
 
+                if username in only_results:
+                    session['is_admin'] = False
+                    session['only_results'] = True
+                    session['pin'] = False
+                    return redirect('/wyniki')
+
                 if line_from_base['admin']:
                     log.info(f'konto admina: {username}')
 
                     return redirect('/dodaj')
 
-                user = session['user']
+                else:
+                    user = session['user']
 
-                log.info(f'konto użytkownika: {user}')
+                    log.info(f'konto użytkownika: {user}')
 
-                return redirect('/ankieta')
+                    return redirect('/ankieta')
 
         flash('Błędna nazwa użytkownika lub hasło')
 
