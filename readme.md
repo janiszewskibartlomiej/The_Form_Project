@@ -13,10 +13,19 @@ Zbieranie wyników wypełnionych formularzy, poddanie ich analizie i wyświetlen
 <li>Pytania zostaną zapisane w badzie danych SQLite3.</li>
 <li>Administrator będzie miał możliwość wyświetlenia pytań w przegladarce oraz usuwania poszczególnego pytania.</li>
 <li>Formularz będzie prezentowany w przeglądarce.</li>
-<li>Użytkownicy będą mogli  zarejestrować się przez panel "Register", a nastepnie zalogować się do formularza.</li>
+<li>Użytkownicy będą mogli  zarejestrować się przez panel "Register" [po wpisaniu prawidłowego pinu], a nastepnie zalogować się do formularza.</li>
 <li>Użytkownicy wypełnią formularz, który zostanie zapisany w badzie danych.</li>
 <li>Administrator po wypełnieniu formularza będzię mial możliwość przgladania wyników ankiety w postaci średniej procentowej względem konkretnego pytania.</li>
+<li>Administrator będzie miał dostęp do wyników wszytskich pytań w przeszłosci, które nie sa dostępne w obcnie zdefiniwanej ankiecie.</li>
+<li>Pytnia które są obecnie bez odpopwiedzi są wyświetlane wraz z informacją o tym stanie</li>
 <li>Administrator będzie miał możliwość analizy danych zapisanych w bazie.</li>
+</ul>
+
+<h5>Wersja 1.1 [07/2019]:</h5>
+<ul>
+<li>Dodano konta z nowymi uprawnieniami - przeglądanie tylko samych wyników ankiety.</li>
+<li>Dodano prezentację wyników w postaci diagramu słubkowego.</li>
+<li>Dodanie informacji ilu użytkowników odpowiedziało na poszególne pytanie</li>
 </ul>
 
 <h4>Lista alertów:<h4>
