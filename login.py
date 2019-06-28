@@ -49,12 +49,12 @@ def log_in():
 
                 if line_from_base['admin']:
                     log.info(f'konto admina: {username}')
-
+                    session['only_results'] = False
                     return redirect('/dodaj')
 
                 else:
                     user = session['user']
-
+                    session['only_results'] = False
                     log.info(f'konto użytkownika: {user}')
 
                     return redirect('/ankieta')
