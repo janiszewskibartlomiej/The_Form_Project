@@ -46,9 +46,10 @@ def count_answers(answers_y_or_no):
         if answer == 'N':
             answer_no += 1
         question = question
+        every_answer = answer_yes + answer_no
     result_y_n = {'id_question': id_question, 'question': question, 'answer_yes': answer_yes,
-                  'answer_no': answer_no}
-    # print(result)
+                  'answer_no': answer_no, 'every_answer': every_answer}
+    # print(result_y_n)
 
     log.info(f'Policzenie odpowiedzi dla {result_y_n}')
 
@@ -66,8 +67,9 @@ def percentage_share(i):
     answer_no = f'{answer_no:.2f} %'
     answer_no = answer_no.replace('.', ',')
     question = i['question']
+    every_answer = i['every_answer']
     result_percent = {'id_pytania': id_question, 'question': question, 'answer_yes': answer_yes,
-                      'answer_no': answer_no}
+                      'answer_no': answer_no, 'every_answer': every_answer}
 
     log.info(f'Dokonuję obliczeń procentowych: {result_percent}')
 

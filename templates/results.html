@@ -35,7 +35,11 @@
                     </div>
                 </div>
                  <section class="results_zero">
-                    <br>
+                    {%if i['every_answer']%}
+                    <div class="number_of_answer">
+                        Ilość odpowiedzi: <span>{{i['every_answer']}}</span>
+                    </div>
+                    {%endif%}
                     <div>
                         {% if i['answer_yes']=='0,00 %' and i['answer_no']=='0,00 %'%}
                         <p>Żaden użytkownik nie odpowiedział na to pytanie</p>

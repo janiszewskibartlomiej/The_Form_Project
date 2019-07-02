@@ -434,3 +434,18 @@ input {
 .results_zero {
     display: flex;
 }
+
+.number_of_answer {
+    margin-top: 1vw;
+    font-size: 1.3vw;
+    padding-left: 21vw;
+    font-style: italic;
+}
+
+.number_of_answer span {
+    color: #e41e5c;
+    background-color: yellow;
+    border-radius: 2vw;
+    border: solid 0.1vw;
+    padding: 0.4vw
+}
