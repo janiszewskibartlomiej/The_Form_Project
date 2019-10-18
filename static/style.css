@@ -438,7 +438,7 @@ input {
 .number_of_answer {
     margin-top: 1vw;
     font-size: 1.3vw;
-    padding-left: 21vw;
+    padding-left: 7em;
     font-style: italic;
 }
 
@@ -447,5 +447,24 @@ input {
     background-color: yellow;
     border-radius: 2vw;
     border: solid 0.1vw;
-    padding: 0.4vw
+    padding: 0.4vw;
 }
+
+.progress {
+    display: flex;
+    height: 0.8em;
+}
+
+#results {
+    display: flex;
+}
+
+#progress_red {
+    background-color: #fc2c03;
+    height: 0.8em;
+    }
+
+#progress_green {
+    background-color: #03fc62;
+    height: 0.8em;
+    }

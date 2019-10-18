@@ -28,15 +28,26 @@
                 <br>
                 <div class="two_button" style="margin: auto;">
                     <div>
-                        Na "Tak": <a class="green">{{i['answer_yes']}}</a>
-                    </div>
-                    <div class="no">
-                        Na "Nie": <a class="red">{{i['answer_no']}}</a>
+                        <section id="results">
+                            <div>
+                                Na "Tak": <a class="green">{{i['answer_yes']}}</a>
+                            </div>
+                            <div class="no">
+                                Na "Nie": <a class="red">{{i['answer_no']}}</a>
+                            </div>
+                        </section>
+                        <br>
+                        <section class="progress" style="width:20em;">
+                            <div id="progress_green" style="width:{{i['answer_yes'][0:2]}}%"></div>
+                            <div id="progress_red" style="width:{{i['answer_no'][0:2]}}%"></div>
+                        </section>
                     </div>
                 </div>
+                <br>
                <section class="results_zero">
                      {%if i['every_answer']%}
-                    <div class="number_of_answer">
+                   <br>
+                   <div class="number_of_answer">
                         Ilość odpowiedzi: <span>{{i['every_answer']}}</span>
                     </div>
                     {%endif%}
